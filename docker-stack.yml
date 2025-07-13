@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  contactbook:
+    image: 192.168.56.10/javacontactbook/contactbook:v1.0  # Jenkins will push/tag new versions
+    ports:
+      - "9090:8080"
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      - contactbook-net
+
+networks:
+  contactbook-net:
+    driver: overlay
+
