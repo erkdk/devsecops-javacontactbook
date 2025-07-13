@@ -1,0 +1,7 @@
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/servlet/DeleteContactServlet.java
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/servlet/EditContactServlet.java
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/servlet/UpdateContactServlet.java
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/dao/ContactDAO.java
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/servlet/ListContactsServlet.java
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/model/Contact.java
+/home/vagrant/devsecops-javacontactbook/src/main/java/com/contactbook/servlet/AddContactServlet.java

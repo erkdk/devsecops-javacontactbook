@@ -1,0 +1,7 @@
+com/contactbook/model/Contact.class
+com/contactbook/servlet/ListContactsServlet.class
+com/contactbook/dao/ContactDAO.class
+com/contactbook/servlet/UpdateContactServlet.class
+com/contactbook/servlet/AddContactServlet.class
+com/contactbook/servlet/DeleteContactServlet.class
+com/contactbook/servlet/EditContactServlet.class
