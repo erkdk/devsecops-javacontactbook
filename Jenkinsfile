@@ -5,7 +5,7 @@ pipeline {
         GIT_CREDENTIALS_ID = 'github-pat'
         IMAGE_NAME = 'contactbook'
         IMAGE_TAG = "v1.${BUILD_NUMBER}"
-        FULL_IMAGE_NAME = "192.168.56.10/javacontactbook/${IMAGE_NAME}:${IMAGE_TAG}"
+        FULL_IMAGE_NAME = "192.168.56.10/javacontactbook/${IMAGE_NAME}:${IMAGE_TAG}" // use domain name instead 
     }
 
     stages {
@@ -13,7 +13,13 @@ pipeline {
             steps {
                 git credentialsId: "${GIT_CREDENTIALS_ID}",
                     url: 'https://github.com/erkdk/devsecops-javacontactbook.git',
-                    branch: 'initial-setup'
+                    branch: 'initial-setup'                                             // appropriate name for branch
+            }
+        }
+
+        stage('Archive contactbook.WAR') {  // archive is used for building image later
+            steps {
+                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
             }
         }
 
@@ -29,13 +35,13 @@ pipeline {
             }
         }
 
-        stage('List Docker Images') {
+        stage('List Docker Images') {           // this stage no need in production
             steps {
                 sh 'docker images'
             }
         }
 
-        stage('Trivy Scan') {
+        stage('Trivy Scan') { // store reports, check high/critical vulnerabilities level and fail build.
             steps {
                 sh 'trivy image ${IMAGE_NAME}:${IMAGE_TAG}'
             }
@@ -59,7 +65,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Swarm') {
+        stage('Deploy to Swarm') {          // ssh remote clusters and deploy
             agent { label 'devops-master' }
 
             steps {
@@ -76,11 +82,9 @@ pipeline {
             }
         }
 
-        stage('Archive contactbook.WAR') {
-            steps {
-                archiveArtifacts artifacts: 'target/*.war', fingerprint: true
-            }
-        }
+
     }
 }
 
+
+// some commented lines are the corrections to be made.

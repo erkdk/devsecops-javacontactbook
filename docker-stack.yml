@@ -16,3 +16,7 @@ networks:
   contactbook-net:
     driver: overlay
 
+
+# volumes? / persistent storage/bind mounts etc?
+# db service?
+# use domain name instead of IP-192.168.56.10
